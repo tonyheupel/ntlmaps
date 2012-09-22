@@ -1,0 +1,16 @@
+Since release 0.9.7 APS has options related to authentication process.
+
+For now there are AUTH_DEBUG and NTLM_FLAGS available.
+
+AUTH_DEBUG:1 makes APS write detailed report on NTLM authentication dialog into *.auth
+files in APS' working directory. Actually not very useful but it may be helpful for
+understanding the NTLM authentication itself.
+
+NTLM_FLAGS: some_hex_digits forces APS to use custom NTLM flags during the authentication.
+For now it is known very little on their effects. So this option may be of use for
+better understanding of NTLM authentication method.
+
+NOTE: that flag format in NTLM_FLAGS is somewhat different from that in *.auth files
+reported with AUTH_DEBUG:1.
+
+NOTE 2: Looks like all this stuff will be useless without access to MS web or proxy server.

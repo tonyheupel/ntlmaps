@@ -1,0 +1,153 @@
+Version 0.9.9.0.1 Friday 27th January 2006 Darryl Dixon <esrever_otua@users.sourceforge.net>
+- Minor bugfix for Python 1.5.2 compatibility
+
+Version 0.9.9 Thursday 10th February 2005 Darryl Dixon <esrever_otua@users.sourceforge.net>
+- Re-release 0.9.8.11 as 0.9.9 stable
+
+Version 0.9.8.11 Friday 14th January 2005 Darryl Dixon <esrever_otua@users.sourceforge.net>
+- Fixed use of split() function that broke Python 1.5.2 compatibility in config_affairs.py
+- Added traps for ValueError in proxy_client.py for Python 1.5.2 compatibility
+- Split testing of upstream proxy codepath in monitor_upstream.py into Python 2.x and 1.5.2 branches
+
+Version 0.9.8.10 Friday 24th December Darryl Dixon <esrever_otua@users.sourceforge.net>
+- Caught another exception condition for failed upstream proxy in monitor_upstream.py
+- Reworked program flow in monitor_upstream.py and server.py to fix 100% cpu bug introduced in 0.9.8.9
+
+Version 0.9.8.9 Thursday 2nd December Darryl Dixon <esrever_otua@users.sourceforge.net>
+- Change default values for PARENT_PROXY_PORT to 8080 and PARENT_PROXY_TIMEOUT to 15 in server.cfg
+- Squashed a bug in config_affairs.py that broke LISTEN_PORT when no PARENT_PROXY specified 
+- Caught another exception condition in proxy_client.py
+- Clarified 'Could not create socket' error in server.py to reference port number
+- Added clause in monitor_upstream.py to prevent automatic failover in the case of single upstream proxy
+- Removed redundant 'pass' statement from server.py
+- Caught another exception condition for failed upstream proxy in monitor_upstream.py
+- BUGFIX sourceforge ID#1070604: Added exception handler for call to socket.gethostbyname_ex() in config_affairs.py
+- Moved copyright banner to appear earlier in initialisation
+- Added TODO to monitor_upstream.py
+- BUGFIX sourceforge ID#1070605: Added exception handler for call to open() in http_header.py
+
+Version 0.9.8.8 Tuesday 16th November 2004 Darryl Dixon <esrever_otua@users.sourceforge.net>
+- Squashed bug introduced in 0.9.8.7 with bad logger entry in proxy_client.py
+- Cleaned up handling of 'PASSWORD' config item in config_affairs.py to squash potential bug
+- Modified server.cfg to enhance description of 'PASSWORD' and 'USER' items
+- Slightly updated the readme.txt
+
+Version 0.9.8.7 Friday 12th November 2004 Darryl Dixon <esrever_otua@users.sourceforge.net>
+- BUGFIX sourceforge ID#798824: Modified exception trap for  c_method = self.client_head_obj.get_http_method() in proxy_client.py
+- Replaced several TODOs from proxy_client.py with logger entries
+- Removed bogus 'accepting connections' comment from main.py
+- Squashed bug with SOMAXCONN setup trapping wrong exception
+- Moved some initialisation code from main.py to server.py
+- Clarified some code dealing with configuration items in main.py
+- Modified some of the startup text/order
+- Sanified processing of int() items in config_affairs.py
+- Removed redundant statement from NTLM section of config_affairs.py
+- Modified ntlm_auth.py to reflect NTLM_TO_BASIC as already an int
+- Properly corrected second instance of sourceforge ID#1061067 in ntlm_auth.py
+
+Version 0.9.8.6 Thursday 11th November 2004 Darryl Dixon <esrever_otua@users.sourceforge.net>
+- Added MAX_CONNECTION_BACKLOG configuration item
+- FEATURE/BUGFIX sourceforge request ID#831606: MAX_CONNECTION_BACKLOG now allows configurable listener
+- Clarified some historical entries in changelog
+- Minor cleanups of error text in config_affairs.py
+
+Version 0.9.8.5 Wednesday 10th November 2004 Darryl Dixon <esrever_otua@users.sourceforge.net>
+- Added PARENT_PROXY_TIMEOUT configuration item
+- Squashed a typo bug in config_affairs.py for HOST_IP_LIST
+- Updated Install.txt
+- BUGFIX sourceforge request ID#707725 and ID#1061067: Fixed 2 instances of error in ntlm_auth.py
+
+Version 0.9.8.4 Tuesday 9th November 2004 Darryl Dixon <esrever_otua@users.sourceforge.net>
+- Changed method of delivering signal to just call sigHandler() directly
+- Seriously reworked programme flow of monitor_upstream.py to accomodate change above
+- Added locking of critical sections to keep threads sane
+- Caught another exception in proxy_client.py
+
+Version 0.9.8.3 Sunday 7th November 2004 Darryl Dixon <esrever_otua@users.sourceforge.net>
+- Changed SIGALRM timer to new custom timerThread() (more portable)
+- Cleaned up signal handling to accomodate new timer implementation
+- Caught some more exceptions in proxy_client.py
+- Fixed corner case which b0rked timer
+
+Version 0.9.8.2 Friday 5th November 2004 Darryl Dixon <esrever_otua@users.sourceforge.net>
+- Added extra exception trapping for fault conditions in proxy_client.py
+- Added __init__.py to begin making ntlmaps relocatable
+- Changed from SIGUSR1 to SIGINT to make more portable
+- Removed two non-ascii comments causing warnings from compiler in md4.py and des_c.py
+
+Version 0.9.8.1 Monday 1st November 2004 Darryl Dixon <esrever_otua@users.sourceforge.net>
+- Added monitor_upstream.py for upstream mode that detects upstream proxy failure
+- Added ability to specify multiple upstream proxies for failover
+
+Verison 0.9.8 - Fri May 17 04:07:20 MSD 2002
+- internal redesign
+- config file redesign
+- fixed bug during HTTPS CONNECT authentication.
+- fixed bug with UNICODE string conversion in NTLM msg3 creation code.
+- no need in proxy port when proxy is not used
+- fixed minor bug with an exception that was eraised if there was no http header
+  in server's response.
+- MSN Messenger and clients alike work again. It had been broken since APS 0.9.1
+- minor bug in header remake (Proxy Connection -> Connection)
+- fixed bug when client sends its header slowly and clients thread exits before
+  doing anything useful. This was broken since version 0.9.7
+- new optional value in config file NT_HOSTNAME (see comment in server.cfg).
+- DOMAIN value in config is now NT_DOMAIN, to make it clear what domain name has
+  to be used.
+- implemented NTLM to BASIC translation. (it gives only one try to enter credentials now)
+
+Verison 0.9.7 - Tue Dec 11 10:43:58 MSK 2001
+- added ability to do multiple authentications in persistent connection. It looks like that
+  there is some kind of NTLM extension that requires client to authenticate himself to every
+  new network location even during persistent connection.
+- fixed bug when request is sent to currently connected web server even if it is a request
+  to different network location.
+- 'Negotiate' authentication method name for www-authentication has been changed to 'NTLM'
+  for compatibility with IIS/4.0
+- added '-c' command line option to point to config file different than './server.cfg'
+- AUTH_DEBUG option added. It makes APS write detailed report on NTLM authentication
+  process.
+- Highly experimental NTLM_FLAGS option allows changing NTLM flags in auth messages sent
+  to remote server.
+
+Verison 0.9.5 - Tue Nov 6 03:02:53 MSK 2001
+- UNICODE string support during authorization (DOMAIN, USER, HOST).
+- NT response is calculated now. Actually UNICODE and NT response are part of NTLM, but
+  most of times everything works without them. See FULL_NTLM option in server.cfg
+- some performance improvement (I hope).
+- now it can behave as a standalone proxy server and do NTLM authentication at Web servers as
+  well. While NTLM cannot pass through proxy server this option may be of use in intranet
+  environment with athorization at local webservices. Just leave PARENT_PROXY option blank and
+  it will connect to remote servers itself.
+
+Verison 0.9.1 - Fri May 25 01:51:30 MSD 2001
+- if one side closed connection server tries sending data left in the buffer
+  before closing connection to the other side.
+- new parameter in server.cfg - FRIENDLY_IPS that works
+  in pair with ALLOW_EXTERNAL_CLIENTS:0. See server.cfg
+- a bit improved POST of long files, but not completely perfect.
+
+Verison 0.8.8 - Thu Apr 26 02:27:37 MSD 2001
+- calls of socket.bind() and socket.connect() are compatible with Python >=1.6 now
+- ALLOW_EXTERNAL_CLIENTS parameter in server.cfg to allow/disallow clients from external hosts
+- NT password to use may be entered at the start time from the console (see server.cfg)
+- calmed down debug info sent to console. Now it appears only if DEBUG is set to 1 in server.cfg
+
+Verison 0.8.6 - Tue Apr 17 02:31:18 MSD 2001
+- an ugly junkbuster's header delimiter '\012\012' worked around
+- hopefully fixed bug with leakage of MS Proxy info page into response with requested resource
+- value names are case insensitive now
+
+Verison 0.8.3 - Wed Apr 11 22:46:40 MSD 2001
+- POST and PUT should work with NTLM
+- possibly there is a bug in proxy response header extracting routine
+
+Verison 0.8.2 - Sun Apr  8 02:16:41 MSD 2001
+- Tunnel mode for HTTPS 'CONNECT' request
+- POST and PUT should work without authorization
+- fixed some bugs
+- POST does not work with NTLM authorization (working on this)
+
+Version 0.8.0 - Thu Mar 29 03:12:41 MSD 2001
+- First public release.
+

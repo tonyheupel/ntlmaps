@@ -1,0 +1,41 @@
+INSTALLATION
+------------
+
+1. Edit server.cfg to match your preferences
+
+2. Run the main.py script.
+
+
+   Windows:
+   ---------
+   runserver.bat
+
+   Unix:
+   ---------
+   /path/to/main.py &
+
+   or
+
+   python /path/to/main.py
+
+3. Try it! Go to your browser and set 127.0.0.1 at port 5865 as
+   your HTTP/FTP proxy server. 5865 is the default port, if you have not
+   changed it in server.cfg, change this appropriatelly.
+
+---------------------------------------------------------------------------------------
+Tip:
+---------------------------------------------------------------------------------------
+    There is a command line option "-c config_file_name" for pointing APS to config
+    files other than the default server.cfg in the working directory.
+
+---------------------------------------------------------------------------------------
+   If server fails to authenticate you at MS Proxy with NTLM, you may want to try
+   changing FULL_NTLM in server.cfg to 1.
+
+   Such message in debug file suggest this problem:
+
+   *** Authentication methods allowed: NTLM
+   *** Looks like our authorization failed.
+   *** Passing 407(401) to client.
+---------------------------------------------------------------------------------------
+
