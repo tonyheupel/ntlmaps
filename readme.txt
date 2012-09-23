@@ -1,7 +1,11 @@
-README file for 'NTLM Authorization Proxy Server' v.0.9.9.0.1
+README file for 'NTLM Authorization Proxy Server' v.0.9.9.0.2
 
 Release Purpose:
 ----------------
+-- For v.0.9.9.0.2
+Add the ability to specify domain, port, and even username and password on the command line
+
+-- For v.0.9.9.0.1
 This is a bugfix release of the 0.9.9 stable series. See changelog.txt for full description.
 
 There is an issue with APS working as a standalone proxy. It serves requests from
@@ -91,6 +95,11 @@ You have to pay nothing for it.
 
 6. CREDITS
 ----------
+-- For v.0.9.9.0.2
+From Tony Heupel <tony@heupel.net>: Thanks to Dmitry A. Rozmanov <dima@xenon.spb.ru>
+for doing this in the first place!  Thanks to everyone below as well.
+
+-- For v.0.9.9.0.1
 Thanks to Nathan Lineback <lineback@pla-netx.com> for reporting about persistent
 connection to MS server with multiple authorization requests. I had never heard of
 such a behavior before that.
