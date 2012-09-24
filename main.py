@@ -64,10 +64,10 @@ conf = config.read_config(get_config_filename(options))
 
 override_config_with_command_line_options(conf, options)
 
-conf['GENERAL']['VERSION'] = '0.9.9.0.1'
+conf['GENERAL']['VERSION'] = '0.9.9.0.2'
 
 print 'NTLM authorization Proxy Server v%s' % conf['GENERAL']['VERSION']
-print 'Copyright (C) 2001-2004 by Dmitry Rozmanov and others.'
+print 'Copyright (C) 2001-2012 by Tony Heupel, Dmitry Rozmanov, and others.'
 
 config = config_affairs.arrange(conf)
 
