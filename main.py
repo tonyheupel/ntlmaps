@@ -33,9 +33,15 @@ def override_config_with_command_line_options(conf, options):
 
     if options.has_key('username'):
         conf['NTLM_AUTH']['USER'] = options['username']
+        # if you are setting a username, then you don't want
+        # to use basic auth as NTLM username/password, so
+        # force it off
+        conf['NTLM_AUTH']['NTLM_TO_BASIC'] = 0
+
 
     if options.has_key('password'):
         conf['NTLM_AUTH']['PASSWORD'] = options['password']
+
 
     if options.has_key('domain'):
         conf['NTLM_AUTH']['NT_DOMAIN'] = options['domain']
