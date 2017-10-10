@@ -427,7 +427,7 @@ class proxy_HTTP_Client:
             self.logger.log('*** Exception getting http code from client_head_obj -- remote end closed connection??\n')
             thread.exit()
 
-        if code == '304' or code == '204' or code[0] == '1':
+        if code == '304' or code == '204' or code[0] == '1' or code == '407':
             self.rserver_all_got = 1
             self.rserver_data_sent = 1
             self.rserver_data_length = 0
