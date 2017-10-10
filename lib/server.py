@@ -58,6 +58,7 @@ class AuthProxyServer:
             thread.start_new_thread(self.monitor.run, ())
         try:
             s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
             s.bind((self.MyHost, self.ListenPort))
         except socket.error:
             print "ERROR: Could not create socket. Possibly port %s is still being used by another process." % self.config['GENERAL']['LISTEN_PORT']
